@@ -47,6 +47,22 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // ZenBonsai Brand Colors
+        sage: {
+          DEFAULT: "hsl(var(--sage-green))",
+        },
+        terracotta: {
+          DEFAULT: "hsl(var(--terracotta))",
+        },
+        jade: {
+          DEFAULT: "hsl(var(--jade-green))",
+        },
+        "soft-orange": {
+          DEFAULT: "hsl(var(--soft-orange))",
+        },
+        "matte-gold": {
+          DEFAULT: "hsl(var(--matte-gold))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -57,6 +73,27 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+      },
+      backgroundImage: {
+        'zen-gradient': 'var(--gradient-primary)',
+        'warm-gradient': 'var(--gradient-warm)',
+        'earth-gradient': 'var(--gradient-earth)',
+        'subtle-gradient': 'var(--gradient-subtle)',
+        'hero-bg': 'linear-gradient(135deg, #2C2C2C 0%, #4A7C59 100%)',
+      },
+      boxShadow: {
+        'zen-soft': 'var(--shadow-soft)',
+        'zen-medium': 'var(--shadow-medium)',
+        'zen-strong': 'var(--shadow-strong)',
+        'zen-glow': 'var(--shadow-glow)',
+      },
+      transitionTimingFunction: {
+        'zen': 'var(--transition-smooth)',
+        'elegant': 'var(--transition-elegant)',
+      },
+      fontFamily: {
+        'inter': ['Inter', 'sans-serif'],
+        'crimson': ['Crimson Text', 'serif'],
       },
       borderRadius: {
         lg: "var(--radius)",
