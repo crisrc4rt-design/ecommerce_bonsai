@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZenBonsai - Arte Milenario del Bonsái</title>
+    <meta name="description" content="Descubre el arte milenario del bonsái con nuestra colección auténtica de árboles y accesorios para el cuidado perfecto">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: 136 58 234;
+            --primary-foreground: 255 255 255;
+            --secondary: 241 245 249;
+            --secondary-foreground: 15 23 42;
+            --muted: 248 250 252;
+            --muted-foreground: 100 116 139;
+            --accent: 241 245 249;
+            --accent-foreground: 15 23 42;
+            --destructive: 239 68 68;
+            --destructive-foreground: 248 250 252;
+            --border: 226 232 240;
+            --input: 226 232 240;
+            --ring: 136 58 234;
+            --background: 255 255 255;
+            --foreground: 15 23 42;
+            --card: 255 255 255;
+            --card-foreground: 15 23 42;
+            --popover: 255 255 255;
+            --popover-foreground: 15 23 42;
+            --matte-gold: 184 134 11;
+            --terracotta: 205 92 92;
+            --sage-green: 159 168 118;
+            --charcoal: 55 65 81;
+            --earth-light: 245 243 239;
+            --zen-gradient: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--matte-gold)));
+            --earth-gradient: linear-gradient(180deg, hsl(var(--earth-light)), hsl(var(--background)));
+            --transition-zen: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow-zen-soft: 0 4px 16px -4px hsl(var(--primary) / 0.1);
+            --shadow-zen-medium: 0 8px 32px -8px hsl(var(--primary) / 0.15);
+        }
+
+        .dark {
+            --primary: 136 58 234;
+            --primary-foreground: 255 255 255;
+            --secondary: 51 65 85;
+            --secondary-foreground: 248 250 252;
+            --muted: 51 65 85;
+            --muted-foreground: 148 163 184;
+            --accent: 51 65 85;
+            --accent-foreground: 248 250 252;
+            --destructive: 220 38 38;
+            --destructive-foreground: 248 250 252;
+            --border: 51 65 85;
+            --input: 51 65 85;
+            --ring: 136 58 234;
+            --background: 2 6 23;
+            --foreground: 248 250 252;
+            --card: 2 6 23;
+            --card-foreground: 248 250 252;
+            --popover: 2 6 23;
+            --popover-foreground: 248 250 252;
+        }
+
+        * {
+            border-color: hsl(var(--border));
+        }
+
+        body {
+            background-color: hsl(var(--background));
+            color: hsl(var(--foreground));
+            font-family: 'Inter', sans-serif;
+        }
+
+        .zen-gradient-text {
+            background: var(--zen-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .zen-gradient {
+            background: var(--zen-gradient);
+        }
+
+        .earth-gradient {
+            background: var(--earth-gradient);
+        }
+
+        .transition-zen {
+            transition: var(--transition-zen);
+        }
+
+        .shadow-zen-soft {
+            box-shadow: var(--shadow-zen-soft);
+        }
+
+        .shadow-zen-medium {
+            box-shadow: var(--shadow-zen-medium);
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .slide-up {
+            animation: slideUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 1rem;
+            }
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: var(--transition-zen);
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .btn-zen {
+            background: var(--zen-gradient);
+            color: hsl(var(--primary-foreground));
+            box-shadow: var(--shadow-zen-soft);
+        }
+
+        .btn-zen:hover {
+            box-shadow: var(--shadow-zen-medium);
+            transform: translateY(-1px);
+        }
+
+        .btn-sm {
+            height: 2.25rem;
+            padding: 0 0.75rem;
+        }
+
+        .btn-md {
+            height: 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .btn-lg {
+            height: 2.75rem;
+            padding: 0 2rem;
+        }
+
+        .card {
+            background-color: hsl(var(--card));
+            color: hsl(var(--card-foreground));
+            border: 1px solid hsl(var(--border));
+        }
+
+        .nav-sticky {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 50;
+            backdrop-filter: blur(8px);
+            background-color: hsla(var(--background), 0.8);
+            border-bottom: 1px solid hsl(var(--border));
+        }
+
+        .hero-parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        @media (max-width: 768px) {
+            .hero-parallax {
+                background-attachment: scroll;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navigation" class="bg-white/90 backdrop-blur-sm border-b transition-zen">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 zen-gradient rounded-full flex items-center justify-center text-white font-bold text-sm">
+                        禅
+                    </div>
+                    <span class="font-semibold text-lg">ZenBonsai</span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center gap-6">
+                    <a href="#inicio" class="text-sm font-medium hover:text-purple-600 transition-zen">Inicio</a>
+                    <a href="#catalogo" class="text-sm font-medium hover:text-purple-600 transition-zen">Catálogo</a>
+                    <a href="#guias" class="text-sm font-medium hover:text-purple-600 transition-zen">Guías</a>
+                    <a href="#acerca" class="text-sm font-medium hover:text-purple-600 transition-zen">Acerca de</a>
+                    <a href="#contacto" class="text-sm font-medium hover:text-purple-600 transition-zen">Contacto</a>
+                </div>
+
+                <!-- Cart Button -->
+                <button onclick="toggleCart()" class="btn btn-zen btn-sm">
+                    🛒 Carrito (<span id="cart-count">0</span>)
+                </button>
+
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileMenu()" class="md:hidden p-2">
+                    <span class="sr-only">Abrir menú</span>
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden pb-4">
+                <div class="flex flex-col gap-2">
+                    <a href="#inicio" class="block px-3 py-2 text-sm font-medium hover:bg-gray-100 rounded-md transition-zen">Inicio</a>
+                    <a href="#catalogo" class="block px-3 py-2 text-sm font-medium hover:bg-gray-100 rounded-md transition-zen">Catálogo</a>
+                    <a href="#guias" class="block px-3 py-2 text-sm font-medium hover:bg-gray-100 rounded-md transition-zen">Guías</a>
+                    <a href="#acerca" class="block px-3 py-2 text-sm font-medium hover:bg-gray-100 rounded-md transition-zen">Acerca de</a>
+                    <a href="#contacto" class="block px-3 py-2 text-sm font-medium hover:bg-gray-100 rounded-md transition-zen">Contacto</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="relative min-h-screen flex items-center justify-center hero-parallax" style="background-image: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 1200 800\"><defs><linearGradient id=\"grad1\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\"><stop offset=\"0%\" style=\"stop-color:%23f3f4f6;stop-opacity:1\" /><stop offset=\"100%\" style=\"stop-color:%23e5e7eb;stop-opacity:1\" /></linearGradient></defs><rect width=\"1200\" height=\"800\" fill=\"url(%23grad1)\" /><circle cx=\"200\" cy=\"200\" r=\"50\" fill=\"%2316a34a\" opacity=\"0.1\" /><circle cx=\"800\" cy=\"300\" r=\"80\" fill=\"%2316a34a\" opacity=\"0.1\" /><circle cx=\"1000\" cy=\"600\" r=\"60\" fill=\"%2316a34a\" opacity=\"0.1\" /></svg>')">
+        <div class="absolute inset-0 bg-black/20"></div>
+        
+        <div class="relative z-10 container mx-auto px-4 text-center">
+            <div class="max-w-4xl mx-auto fade-in">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+                    El Arte del <span class="zen-gradient-text">Bonsái</span>
+                </h1>
+                
+                <p class="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+                    Descubre la belleza milenaria y la serenidad que solo un bonsái auténtico puede brindar. 
+                    Cada árbol cuenta una historia de paciencia, dedicación y armonía.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a href="#catalogo" class="btn btn-zen btn-lg px-8">
+                        🌿 Explorar Colección
+                    </a>
+                    <a href="#guias" class="btn btn-md px-8 bg-white/10 backdrop-blur-sm text-gray-700 border-gray-300 hover:bg-white/20">
+                        📚 Guías de Cuidado
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Catalog -->
+    <section id="catalogo" class="py-16 earth-gradient">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-12 fade-in">
+                <div class="flex items-center justify-center mb-8">
+                    <span style="color: hsl(var(--matte-gold))" class="mr-2">✨</span>
+                    <span style="color: hsl(var(--matte-gold))" class="font-medium tracking-wider uppercase text-sm">
+                        Colección Destacada
+                    </span>
+                </div>
+                
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-6">
+                    Maestros del <span class="zen-gradient-text">Tiempo</span>
+                </h2>
+                
+                <p class="text-lg leading-relaxed text-gray-600">
+                    Cada bonsái en nuestra colección destacada ha sido cuidadosamente seleccionado 
+                    por nuestros expertos, representando décadas de dedicación y arte viviente.
+                </p>
+            </div>
+
+            <!-- Category Filter -->
+            <div class="flex flex-wrap gap-2 mb-8 justify-center overflow-x-auto pb-2">
+                <button onclick="filterProducts('todos')" class="category-btn active px-4 py-2 rounded-full text-sm font-medium transition-zen whitespace-nowrap">
+                    Todos
+                </button>
+                <button onclick="filterProducts('principiantes')" class="category-btn px-4 py-2 rounded-full text-sm font-medium transition-zen whitespace-nowrap">
+                    Principiantes
+                </button>
+                <button onclick="filterProducts('intermedios')" class="category-btn px-4 py-2 rounded-full text-sm font-medium transition-zen whitespace-nowrap">
+                    Intermedios
+                </button>
+                <button onclick="filterProducts('expertos')" class="category-btn px-4 py-2 rounded-full text-sm font-medium transition-zen whitespace-nowrap">
+                    Expertos
+                </button>
+                <button onclick="filterProducts('herramientas')" class="category-btn px-4 py-2 rounded-full text-sm font-medium transition-zen whitespace-nowrap">
+                    Herramientas
+                </button>
+                <button onclick="filterProducts('macetas')" class="category-btn px-4 py-2 rounded-full text-sm font-medium transition-zen whitespace-nowrap">
+                    Macetas
+                </button>
+            </div>
+
+            <!-- Products Grid -->
+            <div id="products-grid" class="product-grid mb-12">
+                <!-- Products will be dynamically inserted here -->
+            </div>
+
+            <!-- Features Section -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+                <div class="text-center slide-up" style="animation-delay: 0s">
+                    <div class="w-16 h-16 zen-gradient rounded-full flex items-center justify-center mx-auto mb-4 shadow-zen-soft text-white text-2xl">
+                        🏆
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Garantía de Calidad</h3>
+                    <p class="text-gray-600">Cada bonsái viene con certificado de autenticidad y garantía de 30 días.</p>
+                </div>
+                
+                <div class="text-center slide-up" style="animation-delay: 0.2s">
+                    <div class="w-16 h-16 zen-gradient rounded-full flex items-center justify-center mx-auto mb-4 shadow-zen-soft text-white text-2xl">
+                        🌿
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Cuidado Personalizado</h3>
+                    <p class="text-gray-600">Incluimos guías detalladas y soporte continuo para el cuidado óptimo.</p>
+                </div>
+                
+                <div class="text-center slide-up" style="animation-delay: 0.4s">
+                    <div class="w-16 h-16 zen-gradient rounded-full flex items-center justify-center mx-auto mb-4 shadow-zen-soft text-white text-2xl">
+                        ✨
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Selección Experta</h3>
+                    <p class="text-gray-600">Curados por maestros bonsaístas con más de 20 años de experiencia.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guides Section -->
+    <section id="guias" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                    Guías de <span class="zen-gradient-text">Cuidado</span>
+                </h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                    Aprende el arte milenario del cuidado del bonsái con nuestras guías expertas
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card rounded-xl overflow-hidden shadow-zen-soft slide-up">
+                    <div class="h-48 bg-gradient-to-br from-green-100 to-green-200 flex items-center justify-center text-4xl">
+                        💧
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-semibold text-lg mb-3">Riego Perfecto</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Aprende la técnica correcta de riego según la especie y estación del año.
+                        </p>
+                        <button class="text-purple-600 text-sm font-medium hover:text-purple-700 transition-zen">
+                            Leer más →
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card rounded-xl overflow-hidden shadow-zen-soft slide-up" style="animation-delay: 0.1s">
+                    <div class="h-48 bg-gradient-to-br from-yellow-100 to-yellow-200 flex items-center justify-center text-4xl">
+                        ☀️
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-semibold text-lg mb-3">Iluminación Ideal</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Descubre los secretos de la luz perfecta para cada tipo de bonsái.
+                        </p>
+                        <button class="text-purple-600 text-sm font-medium hover:text-purple-700 transition-zen">
+                            Leer más →
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card rounded-xl overflow-hidden shadow-zen-soft slide-up" style="animation-delay: 0.2s">
+                    <div class="h-48 bg-gradient-to-br from-purple-100 to-purple-200 flex items-center justify-center text-4xl">
+                        ✂️
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-semibold text-lg mb-3">Poda y Modelado</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Técnicas de poda profesional para mantener la forma perfecta.
+                        </p>
+                        <button class="text-purple-600 text-sm font-medium hover:text-purple-700 transition-zen">
+                            Leer más →
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="acerca" class="py-16 earth-gradient">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8">
+                    Nuestra <span class="zen-gradient-text">Filosofía</span>
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div class="text-left">
+                        <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                            En ZenBonsai, creemos que cada bonsái es más que una planta: es una conexión 
+                            con la naturaleza, una meditación viviente y un legado de paciencia.
+                        </p>
+                        
+                        <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                            Con más de 20 años de experiencia, seleccionamos cada árbol con el cuidado 
+                            y respeto que merece esta antigua tradición japonesa.
+                        </p>
+                        
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 zen-gradient rounded-full flex items-center justify-center text-white font-bold">
+                                禅
+                            </div>
+                            <div>
+                                <p class="font-semibold">Maestro Hiroshi</p>
+                                <p class="text-sm text-gray-600">Fundador y Curador Principal</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="w-64 h-64 mx-auto bg-gradient-to-br from-green-100 to-green-200 rounded-full flex items-center justify-center text-6xl">
+                        🌸
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-2xl mx-auto text-center fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                    <span class="zen-gradient-text">Contacto</span>
+                </h2>
+                <p class="text-lg text-gray-600 mb-8">
+                    ¿Tienes preguntas sobre el cuidado de tu bonsái? Estamos aquí para ayudarte.
+                </p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="text-center">
+                        <div class="w-12 h-12 zen-gradient rounded-full flex items-center justify-center mx-auto mb-4 text-white text-xl">
+                            📧
+                        </div>
+                        <h3 class="font-semibold mb-2">Email</h3>
+                        <p class="text-gray-600 text-sm">info@zenbonsai.es</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-12 h-12 zen-gradient rounded-full flex items-center justify-center mx-auto mb-4 text-white text-xl">
+                            📞
+                        </div>
+                        <h3 class="font-semibold mb-2">Teléfono</h3>
+                        <p class="text-gray-600 text-sm">+34 900 123 456</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-12 h-12 zen-gradient rounded-full flex items-center justify-center mx-auto mb-4 text-white text-xl">
+                            📍
+                        </div>
+                        <h3 class="font-semibold mb-2">Ubicación</h3>
+                        <p class="text-gray-600 text-sm">Madrid, España</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 text-gray-800 py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                <!-- Company Info -->
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-8 h-8 zen-gradient rounded-full flex items-center justify-center text-white font-bold text-sm">
+                            禅
+                        </div>
+                        <span class="font-semibold text-lg text-gray-800">ZenBonsai</span>
+                    </div>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Dedicados al arte milenario del bonsái, ofrecemos árboles auténticos 
+                        y el conocimiento para cuidarlos con amor y respeto.
+                    </p>
+                    <div class="flex gap-3 mt-4">
+                        <a href="https://facebook.com/login" target="_blank" rel="noopener noreferrer" class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-yellow-600 hover:bg-yellow-600 hover:text-white transition-zen">
+                            📘
+                        </a>
+                        <a href="https://instagram.com/accounts/login" target="_blank" rel="noopener noreferrer" class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-yellow-600 hover:bg-yellow-600 hover:text-white transition-zen">
+                            📷
+                        </a>
+                        <a href="https://twitter.com/login" target="_blank" rel="noopener noreferrer" class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-yellow-600 hover:bg-yellow-600 hover:text-white transition-zen">
+                            🐦
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="font-semibold mb-4 text-yellow-600">Navegación</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#inicio" class="text-gray-600 hover:text-yellow-600 transition-zen text-sm">Inicio</a></li>
+                        <li><a href="#catalogo" class="text-gray-600 hover:text-yellow-600 transition-zen text-sm">Catálogo</a></li>
+                        <li><a href="#guias" class="text-gray-600 hover:text-yellow-600 transition-zen text-sm">Guías de Cuidado</a></li>
+                        <li><a href="#acerca" class="text-gray-600 hover:text-yellow-600 transition-zen text-sm">Acerca de</a></li>
+                    </ul>
+                </div>
+
+                <!-- Customer Service -->
+                <div>
+                    <h3 class="font-semibold mb-4 text-yellow-600">Atención al Cliente</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-yellow-600 transition-zen text-sm">Política de Envíos</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-yellow-600 transition-zen text-sm">Devoluciones</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-yellow-600 transition-zen text-sm">Garantía</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-yellow-600 transition-zen text-sm">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h3 class="font-semibold mb-4 text-yellow-600">Contacto</h3>
+                    <div class="space-y-3 text-sm">
+                        <div class="flex items-center gap-2">
+                            <span>📧</span>
+                            <span class="text-gray-600">info@zenbonsai.es</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span>📞</span>
+                            <span class="text-gray-600">+34 900 123 456</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <span>📍</span>
+                            <span class="text-gray-600">
+                                Calle del Jardín Zen, 42<br/>
+                                28001 Madrid, España
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-300 pt-6 text-center">
+                <p class="text-gray-600 text-sm">
+                    © 2024 ZenBonsai. Todos los derechos reservados. Hecho con 🌿 para los amantes del bonsái.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div id="cart-sidebar" class="fixed inset-y-0 right-0 w-80 bg-white shadow-2xl transform translate-x-full transition-transform z-50">
+        <div class="p-6 border-b">
+            <div class="flex items-center justify-between">
+                <h2 class="text-lg font-semibold">Carrito de Compras</h2>
+                <button onclick="toggleCart()" class="text-gray-500 hover:text-gray-700">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <div id="cart-items" class="flex-1 overflow-y-auto p-6">
+            <p class="text-gray-500 text-center">Tu carrito está vacío</p>
+        </div>
+        
+        <div class="p-6 border-t">
+            <div class="flex justify-between mb-4">
+                <span class="font-semibold">Total:</span>
+                <span id="cart-total" class="font-semibold">€0.00</span>
+            </div>
+            <button class="btn btn-zen w-full btn-md">
+                Proceder al Checkout
+            </button>
+        </div>
+    </div>
+
+    <!-- Cart Backdrop -->
+    <div id="cart-backdrop" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden" onclick="toggleCart()"></div>
+
+    <script>
+        // Products data with placeholder images (replace with actual image URLs)
+        const products = [
+            {
+                id: "1",
+                name: "Ficus Retusa Clásico",
+                species: "Ficus Retusa",
+                price: 89.99,
+                originalPrice: 119.99,
+                image: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'><rect width='300' height='300' fill='%23f0f9ff'/><text x='150' y='150' text-anchor='middle' dy='.3em' font-family='Arial' font-size='24' fill='%236b7280'>🌿 Ficus</text></svg>",
+                category: "principiantes",
+                badges: ["Destacado", "Descuento"],
+                rating: 4.8,
+                careInstructions: "💧 Riego: 2-3 veces/semana • ☀️ Luz: Indirecta"
+            },
+            {
+                id: "2",
+                name: "Arce Japonés Rojo Premium",
+                species: "Acer Palmatum",
+                price: 234.00,
+                originalPrice: 280.00,
+                image: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'><rect width='300' height='300' fill='%23fef2f2'/><text x='150' y='150' text-anchor='middle' dy='.3em' font-family='Arial' font-size='24' fill='%236b7280'>🍁 Arce</text></svg>",
+                category: "expertos",
+                badges: ["Destacado", "Descuento"],
+                rating: 4.9,
+                careInstructions: "💧 Riego: 3-4 veces/semana • ☀️ Luz: Semisombra"
+            },
+            {
+                id: "3",
+                name: "Bosque de Juníperos Miniatura",
+                species: "Juniperus Procumbens",
+                price: 345.50,
+                image: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'><rect width='300' height='300' fill='%23f0fdf4'/><text x='150' y='150' text-anchor='middle' dy='.3em' font-family='Arial' font-size='20' fill='%236b7280'>🌲 Junípero</text></svg>",
+                category: "expertos",
+                badges: ["Nuevo", "Destacado"],
+                rating: 4.7,
+                careInstructions: "💧 Riego: 2 veces/semana • ☀️ Luz: Sol directo"
+            },
+            {
+                id: "4",
+                name: "Junípero San José Fukinagashi",
+                species: "Juniperus Chinensis",
+                price: 189.99,
+                image: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'><rect width='300' height='300' fill='%23f0fdf4'/><text x='150' y='150' text-anchor='middle' dy='.3em' font-family='Arial' font-size='18' fill='%236b7280'>🌿 J. Chinensis</text></svg>",
+                category: "intermedios",
+                badges: ["Nuevo"],
+                rating: 4.6,
+                careInstructions: "💧 Riego: 1-2 veces/semana • ☀️ Luz: Sol directo"
+            },
+            {
+                id: "5",
+                name: "Kit Herramientas Premium",
+                species: "Kit Profesional",
+                price: 67.50,
+                image: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'><rect width='300' height='300' fill='%23fefce8'/><text x='150' y='150' text-anchor='middle' dy='.3em' font-family='Arial' font-size='24' fill='%236b7280'>🛠️ Kit</text></svg>",
+                category: "herramientas",
+                badges: ["Nuevo"],
+                rating: 4.9,
+                careInstructions: "✂️ Incluye: Tijeras, pinzas, rastrillo y alambre"
+            },
+            {
+                id: "6",
+                name: "Carmona Microphylla Inicio",
+                species: "Carmona Retusa",
+                price: 45.99,
+                originalPrice: 65.00,
+                image: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'><rect width='300' height='300' fill='%23f0f9ff'/><text x='150' y='150' text-anchor='middle' dy='.3em' font-family='Arial' font-size='22' fill='%236b7280'>🌸 Carmona</text></svg>",
+                category: "principiantes",
+                badges: ["Descuento"],
+                rating: 4.4,
+                careInstructions: "💧 Riego: 2 veces/semana • ☀️ Luz: Indirecta"
+            },
+            {
+                id: "7",
+                name: "Olmo Chino Tradicional",
+                species: "Ulmus Parvifolia",
+                price: 125.00,
+                image: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'><rect width='300' height='300' fill='%23f0fdf4'/><text x='150' y='150' text-anchor='middle' dy='.3em' font-family='Arial' font-size='24' fill='%236b7280'>🌳 Olmo</text></svg>",
+                category: "intermedios",
+                badges: ["Destacado"],
+                rating: 4.5,
+                careInstructions: "💧 Riego: 3 veces/semana • ☀️ Luz: Sol parcial"
+            },
+            {
+                id: "8",
+                name: "Serissa Phoetida Blanca",
+                species: "Serissa Phoetida",
+                price: 78.99,
+                originalPrice: 95.00,
+                image: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'><rect width='300' height='300' fill='%23fefce8'/><text x='150' y='150' text-anchor='middle' dy='.3em' font-family='Arial' font-size='22' fill='%236b7280'>🌼 Serissa</text></svg>",
+                category: "intermedios",
+                badges: ["Descuento"],
+                rating: 4.3,
+                careInstructions: "💧 Riego: Diario en verano • ☀️ Luz: Semisombra"
+            },
+            {
+                id: "9",
+                name: "Zelkova Serrata Shohin",
+                species: "Zelkova Serrata",
+                price: 156.50,
+                image: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'><rect width='300' height='300' fill='%23f0f9ff'/><text x='150' y='150' text-anchor='middle' dy='.3em' font-family='Arial' font-size='22' fill='%236b7280'>🍃 Zelkova</text></svg>",
+                category: "expertos",
+                badges: ["Destacado"],
+                rating: 4.8,
+                careInstructions: "💧 Riego: 2-3 veces/semana • ☀️ Luz: Sol directo"
+            },
+            {
+                id: "10",
+                name: "Maceta Esmaltada Azul Cobalto",
+                species: "Maceta Artesanal",
+                price: 35.00,
+                image: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'><rect width='300' height='300' fill='%23eff6ff'/><text x='150' y='150' text-anchor='middle' dy='.3em' font-family='Arial' font-size='24' fill='%236b7280'>🏺 Maceta</text></svg>",
+                category: "macetas",
+                badges: [],
+                rating: 4.6,
+                careInstructions: "🏺 Tamaño: 15cm • Drenaje óptimo incluido"
+            },
+            {
+                id: "11",
+                name: "Pinus Thunbergii Maestro",
+                species: "Pinus Thunbergii",
+                price: 890.00,
+                image: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'><rect width='300' height='300' fill='%23f0fdf4'/><text x='150' y='150' text-anchor='middle' dy='.3em' font-family='Arial' font-size='24' fill='%236b7280'>🌲 Pinus</text></svg>",
+                category: "expertos",
+                badges: ["Destacado"],
+                rating: 5.0,
+                careInstructions: "💧 Riego: 1-2 veces/semana • ☀️ Luz: Sol pleno"
+            },
+            {
+                id: "12",
+                name: "Portulacaria Afra Jade",
+                species: "Portulacaria Afra",
+                price: 29.99,
+                originalPrice: 42.00,
+                image: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'><rect width='300' height='300' fill='%23f0fdf4'/><text x='150' y='150' text-anchor='middle' dy='.3em' font-family='Arial' font-size='20' fill='%236b7280'>🌿 Portulacaria</text></svg>",
+                category: "principiantes",
+                badges: ["Descuento"],
+                rating: 4.2,
+                careInstructions: "💧 Riego: 1 vez/semana • ☀️ Luz: Sol directo"
+            }
+        ];
+
+        let cart = [];
+        let currentCategory = 'todos';
+
+        // Initialize the app
+        document.addEventListener('DOMContentLoaded', function() {
+            renderProducts();
+            updateCartUI();
+            initializeNavigation();
+        });
+
+        // Navigation functionality
+        function initializeNavigation() {
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Sticky navigation on scroll
+            window.addEventListener('scroll', function() {
+                const nav = document.getElementById('navigation');
+                if (window.scrollY > 50) {
+                    nav.classList.add('nav-sticky');
+                } else {
+                    nav.classList.remove('nav-sticky');
+                }
+            });
+        }
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        // Product filtering
+        function filterProducts(category) {
+            currentCategory = category;
+            
+            // Update active button
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            renderProducts();
+        }
+
+        // Render products
+        function renderProducts() {
+            const grid = document.getElementById('products-grid');
+            const filteredProducts = currentCategory === 'todos' 
+                ? products 
+                : products.filter(product => product.category === currentCategory);
+
+            grid.innerHTML = filteredProducts.map((product, index) => {
+                const renderStars = (rating) => '⭐'.repeat(Math.floor(rating));
+                
+                const getBadgeStyle = (badge) => {
+                    switch (badge.toLowerCase()) {
+                        case 'nuevo':
+                            return 'bg-purple-600 text-white';
+                        case 'destacado':
+                            return 'bg-yellow-600 text-white';
+                        case 'descuento':
+                            return 'bg-red-500 text-white';
+                        default:
+                            return 'bg-gray-200 text-gray-800';
+                    }
+                };
+
+                return `
+                    <div class="card rounded-xl overflow-hidden shadow-zen-soft hover:shadow-zen-medium transition-zen hover:-translate-y-1 slide-up" 
+                         style="animation-delay: ${index * 0.1}s"
+                         data-category="${product.category}">
+                        <div class="relative aspect-square overflow-hidden bg-gray-100">
+                            <img src="${product.image}" 
+                                 alt="${product.name}"
+                                 class="w-full h-full object-cover transition-zen hover:scale-105">
+                            
+                            ${product.badges && product.badges.length > 0 ? `
+                                <div class="absolute top-3 left-3 flex flex-col gap-2">
+                                    ${product.badges.map(badge => `
+                                        <span class="px-2 py-1 rounded-full text-xs font-medium ${getBadgeStyle(badge)}">
+                                            ${badge}
+                                        </span>
+                                    `).join('')}
+                                </div>
+                            ` : ''}
+                        </div>
+
+                        <div class="p-4">
+                            <p class="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2">
+                                ${product.species}
+                            </p>
+                            
+                            <h3 class="font-semibold text-base mb-3 text-gray-900 leading-tight">
+                                ${product.name}
+                            </h3>
+                            
+                            <div class="flex items-center gap-2 mb-3">
+                                <div class="text-sm">${renderStars(product.rating)}</div>
+                                <span class="text-xs text-gray-500">(${product.rating})</span>
+                            </div>
+
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="text-lg font-bold text-purple-600">€${product.price.toFixed(2)}</span>
+                                ${product.originalPrice ? `
+                                    <span class="text-sm text-gray-500 line-through">
+                                        €${product.originalPrice.toFixed(2)}
+                                    </span>
+                                ` : ''}
+                            </div>
+
+                            <div class="text-xs text-gray-500 mb-4 pt-3 border-t border-gray-200">
+                                ${product.careInstructions}
+                            </div>
+                            
+                            <button onclick="addToCart('${product.id}')" class="btn btn-zen btn-sm w-full">
+                                Añadir al Carrito
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            // Apply active category button styles
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                if (btn.textContent.toLowerCase() === currentCategory || 
+                    (currentCategory === 'todos' && btn.textContent === 'Todos')) {
+                    btn.className = 'category-btn active px-4 py-2 rounded-full text-sm font-medium transition-zen whitespace-nowrap zen-gradient text-white shadow-zen-soft';
+                } else {
+                    btn.className = 'category-btn px-4 py-2 rounded-full text-sm font-medium transition-zen whitespace-nowrap bg-gray-200 text-gray-700 hover:bg-gray-300';
+                }
+            });
+        }
+
+        // Cart functionality
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    image: product.image,
+                    quantity: 1
+                });
+            }
+
+            updateCartUI();
+            showToast(`¡${product.name} añadido al carrito!`);
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartUI();
+            showToast('Producto eliminado del carrito');
+        }
+
+        function updateCartUI() {
+            const cartCount = document.getElementById('cart-count');
+            const cartItems = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
+
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+            cartCount.textContent = totalItems;
+            cartTotal.textContent = `€${totalPrice.toFixed(2)}`;
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p class="text-gray-500 text-center">Tu carrito está vacío</p>';
+            } else {
+                cartItems.innerHTML = cart.map(item => `
+                    <div class="flex items-center gap-4 mb-4 p-3 bg-gray-50 rounded-lg">
+                        <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded">
+                        <div class="flex-1">
+                            <h4 class="font-medium text-sm">${item.name}</h4>
+                            <p class="text-sm text-gray-600">€${item.price.toFixed(2)} x ${item.quantity}</p>
+                        </div>
+                        <button onclick="removeFromCart('${item.id}')" class="text-red-500 hover:text-red-700">
+                            🗑️
+                        </button>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function toggleCart() {
+            const sidebar = document.getElementById('cart-sidebar');
+            const backdrop = document.getElementById('cart-backdrop');
+            
+            const isOpen = !sidebar.classList.contains('translate-x-full');
+            
+            if (isOpen) {
+                sidebar.classList.add('translate-x-full');
+                backdrop.classList.add('hidden');
+            } else {
+                sidebar.classList.remove('translate-x-full');
+                backdrop.classList.remove('hidden');
+            }
+        }
+
+        // Toast notification
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 transition-zen';
+            toast.textContent = message;
+            
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateY(-20px)';
+                setTimeout(() => {
+                    document.body.removeChild(toast);
+                }, 300);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

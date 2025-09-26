@@ -9,7 +9,7 @@ export const Footer = () => {
   };
 
   return (
-    <footer className="bg-charcoal text-white py-12">
+    <footer className="bg-card text-foreground py-12">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Company Info */}
@@ -18,20 +18,20 @@ export const Footer = () => {
               <div className="w-8 h-8 bg-zen-gradient rounded-full flex items-center justify-center text-primary-foreground font-bold text-sm">
                 禅
               </div>
-              <span className="font-semibold text-lg">ZenBonsai</span>
+              <span className="font-semibold text-lg text-foreground">ZenBonsai</span>
             </div>
-            <p className="text-white/80 text-sm leading-relaxed">
+            <p className="text-muted-foreground text-sm leading-relaxed">
               Dedicados al arte milenario del bonsái, ofrecemos árboles auténticos 
               y el conocimiento para cuidarlos con amor y respeto.
             </p>
             <div className="flex gap-3 mt-4">
-              <a href="#" className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center text-matte-gold hover:bg-matte-gold hover:text-charcoal transition-zen">
+              <a href="https://facebook.com/login" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-muted rounded-full flex items-center justify-center text-matte-gold hover:bg-matte-gold hover:text-white transition-zen">
                 📘
               </a>
-              <a href="#" className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center text-matte-gold hover:bg-matte-gold hover:text-charcoal transition-zen">
+              <a href="https://instagram.com/accounts/login" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-muted rounded-full flex items-center justify-center text-matte-gold hover:bg-matte-gold hover:text-white transition-zen">
                 📷
               </a>
-              <a href="#" className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center text-matte-gold hover:bg-matte-gold hover:text-charcoal transition-zen">
+              <a href="https://twitter.com/login" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-muted rounded-full flex items-center justify-center text-matte-gold hover:bg-matte-gold hover:text-white transition-zen">
                 🐦
               </a>
             </div>
@@ -44,7 +44,7 @@ export const Footer = () => {
               <li>
                 <button 
                   onClick={() => smoothScroll('inicio')}
-                  className="text-white/80 hover:text-matte-gold transition-zen text-sm"
+                  className="text-muted-foreground hover:text-matte-gold transition-zen text-sm"
                 >
                   Inicio
                 </button>
@@ -52,7 +52,7 @@ export const Footer = () => {
               <li>
                 <button 
                   onClick={() => smoothScroll('catalogo')}
-                  className="text-white/80 hover:text-matte-gold transition-zen text-sm"
+                  className="text-muted-foreground hover:text-matte-gold transition-zen text-sm"
                 >
                   Catálogo
                 </button>
@@ -60,7 +60,7 @@ export const Footer = () => {
               <li>
                 <button 
                   onClick={() => smoothScroll('guias')}
-                  className="text-white/80 hover:text-matte-gold transition-zen text-sm"
+                  className="text-muted-foreground hover:text-matte-gold transition-zen text-sm"
                 >
                   Guías de Cuidado
                 </button>
@@ -68,7 +68,7 @@ export const Footer = () => {
               <li>
                 <button 
                   onClick={() => smoothScroll('acerca')}
-                  className="text-white/80 hover:text-matte-gold transition-zen text-sm"
+                  className="text-muted-foreground hover:text-matte-gold transition-zen text-sm"
                 >
                   Acerca de
                 </button>
@@ -81,22 +81,22 @@ export const Footer = () => {
             <h3 className="font-semibold mb-4 text-matte-gold">Atención al Cliente</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-white/80 hover:text-matte-gold transition-zen text-sm">
+                <a href="#" className="text-muted-foreground hover:text-matte-gold transition-zen text-sm">
                   Política de Envíos
                 </a>
               </li>
               <li>
-                <a href="#" className="text-white/80 hover:text-matte-gold transition-zen text-sm">
+                <a href="#" className="text-muted-foreground hover:text-matte-gold transition-zen text-sm">
                   Devoluciones
                 </a>
               </li>
               <li>
-                <a href="#" className="text-white/80 hover:text-matte-gold transition-zen text-sm">
+                <a href="#" className="text-muted-foreground hover:text-matte-gold transition-zen text-sm">
                   Garantía
                 </a>
               </li>
               <li>
-                <a href="#" className="text-white/80 hover:text-matte-gold transition-zen text-sm">
+                <a href="#" className="text-muted-foreground hover:text-matte-gold transition-zen text-sm">
                   FAQ
                 </a>
               </li>
@@ -109,15 +109,15 @@ export const Footer = () => {
             <div className="space-y-3 text-sm">
               <div className="flex items-center gap-2">
                 <span>📧</span>
-                <span className="text-white/80">info@zenbonsai.es</span>
+                <span className="text-muted-foreground">info@zenbonsai.es</span>
               </div>
               <div className="flex items-center gap-2">
                 <span>📞</span>
-                <span className="text-white/80">+34 900 123 456</span>
+                <span className="text-muted-foreground">+34 900 123 456</span>
               </div>
               <div className="flex items-start gap-2">
                 <span>📍</span>
-                <span className="text-white/80">
+                <span className="text-muted-foreground">
                   Calle del Jardín Zen, 42<br/>
                   28001 Madrid, España
                 </span>
@@ -126,8 +126,8 @@ export const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-white/10 pt-6 text-center">
-          <p className="text-white/60 text-sm">
+        <div className="border-t border-border pt-6 text-center">
+          <p className="text-muted-foreground text-sm">
             © {currentYear} ZenBonsai. Todos los derechos reservados. Hecho con 🌿 para los amantes del bonsái.
           </p>
         </div>

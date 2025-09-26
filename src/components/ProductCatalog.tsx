@@ -7,6 +7,13 @@ import ficusImg from "@/assets/ficus.jpg";
 import juniperForestImg from "@/assets/juniper-forest.webp";
 import juniperFukinagashiImg from "@/assets/juniper-fukinagashi.webp";
 import bonsaiToolsImg from "@/assets/bonsai-tools.webp";
+import portulacariaBonsaiImg from "@/assets/portulacaria-bonsai.jpg";
+import zelkovaSerrataImg from "@/assets/zelkova-serrata.jpg";
+import olmoChinoImg from "@/assets/olmo-chino.jpg";
+import macetaCeramicaImg from "@/assets/maceta-ceramica.webp";
+import pinusThunbergiiImg from "@/assets/pinus-thunbergii.jpg";
+import serissaForestImg from "@/assets/serissa-forest.jpg";
+import carmonaMicrophyllaImg from "@/assets/carmona-microphylla.jpg";
 
 interface Product {
   id: string;
@@ -92,7 +99,7 @@ export const ProductCatalog = ({ onAddToCart }: ProductCatalogProps) => {
       species: "Carmona Retusa",
       price: 45.99,
       originalPrice: 65.00,
-      image: ficusImg, // Using ficus as placeholder
+      image: carmonaMicrophyllaImg,
       category: "principiantes",
       badges: ["Descuento"],
       rating: 4.4,
@@ -103,7 +110,7 @@ export const ProductCatalog = ({ onAddToCart }: ProductCatalogProps) => {
       name: "Olmo Chino Tradicional",
       species: "Ulmus Parvifolia",
       price: 125.00,
-      image: acerBonsaiImg, // Using acer as placeholder
+      image: olmoChinoImg,
       category: "intermedios",
       badges: ["Destacado"],
       rating: 4.5,
@@ -115,7 +122,7 @@ export const ProductCatalog = ({ onAddToCart }: ProductCatalogProps) => {
       species: "Serissa Phoetida",
       price: 78.99,
       originalPrice: 95.00,
-      image: juniperFukinagashiImg, // Using juniper as placeholder
+      image: serissaForestImg,
       category: "intermedios",
       badges: ["Descuento"],
       rating: 4.3,
@@ -126,7 +133,7 @@ export const ProductCatalog = ({ onAddToCart }: ProductCatalogProps) => {
       name: "Zelkova Serrata Shohin",
       species: "Zelkova Serrata",
       price: 156.50,
-      image: juniperForestImg, // Using forest as placeholder
+      image: zelkovaSerrataImg,
       category: "expertos",
       badges: ["Destacado"],
       rating: 4.8,
@@ -137,7 +144,7 @@ export const ProductCatalog = ({ onAddToCart }: ProductCatalogProps) => {
       name: "Maceta Esmaltada Azul Cobalto",
       species: "Maceta Artesanal",
       price: 35.00,
-      image: bonsaiToolsImg, // Using tools as placeholder
+      image: macetaCeramicaImg,
       category: "macetas",
       badges: [],
       rating: 4.6,
@@ -148,7 +155,7 @@ export const ProductCatalog = ({ onAddToCart }: ProductCatalogProps) => {
       name: "Pinus Thunbergii Maestro",
       species: "Pinus Thunbergii",
       price: 890.00,
-      image: acerBonsaiImg,
+      image: pinusThunbergiiImg,
       category: "expertos",
       badges: ["Destacado"],
       rating: 5.0,
@@ -160,7 +167,7 @@ export const ProductCatalog = ({ onAddToCart }: ProductCatalogProps) => {
       species: "Portulacaria Afra",
       price: 29.99,
       originalPrice: 42.00,
-      image: ficusImg,
+      image: portulacariaBonsaiImg,
       category: "principiantes",
       badges: ["Descuento"],
       rating: 4.2,
